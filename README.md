@@ -117,7 +117,7 @@ npm run lint     # Executa o linter ESLint
 <br><em>Framework principal</em>
 </td>
 <td align="center">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-plain.svg" width="50" height="50" alt="TailwindCSS"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="50" height="50" alt="TailwindCSS"/>
 <br><strong>TailwindCSS 4.1.7</strong>
 <br><em>Estilização</em>
 </td>
