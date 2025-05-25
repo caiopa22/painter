@@ -159,7 +159,7 @@ painter/
 <table align="center">
 <tr>
 <td align="center">
-<img src="https://github.com/caiopacheco.png" width="100" height="100" style="border-radius: 50%;" alt="Caio Pacheco"/>
+<img src="https://github.com/caiopa22.png" width="100" height="100" style="border-radius: 50%;" alt="Caio Pacheco"/>
 <br><strong>Caio Pacheco</strong>
 <br><em>UI/UX Designer</em>
 <br><em>React Developer</em>
@@ -173,7 +173,7 @@ painter/
 <br><code>RA: G839226</code>
 </td>
 <td align="center">
-<img src="https://github.com/luizalacerda.png" width="100" height="100" style="border-radius: 50%;" alt="Luiza Lacerda"/>
+<img src="https://github.com/LuLacrd.png" width="100" height="100" style="border-radius: 50%;" alt="Luiza Lacerda"/>
 <br><strong>Luiza Lacerda</strong>
 <br><em>Project Lead</em>
 <br><em>Quality Assurance</em>
