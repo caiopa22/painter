@@ -1,43 +1,40 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+// Definindo arrays com opções de cores e formas disponíveis
 const colors = ['red', 'blue', 'green', 'yellow'];
 const shapes = ['square', 'triangle', 'circle'];
 
 export default function DrawingApp() {
+  // Estados para controlar a forma, cor selecionada e o código gerado
   const [selectedShape, setSelectedShape] = useState('square');
   const [selectedColor, setSelectedColor] = useState('red');
   const [shapeCode, setShapeCode] = useState('');
-  const canvasRef = useRef(null);
+  const canvasRef = useRef(null); // Referência para o elemento <canvas>
 
-  // Meet the creative minds behind this project!
+  // Informações da equipe (fotos, nomes, RA e papéis)
   const team = [
     {
       pfp: "/imgs/caio-pfp.jpg",
       name: "Caio Pacheco",
       RA: "N0896951",
-      roles: [
-        "UI/UX", "React Developer"
-      ]
+      roles: ["UI/UX", "React Developer"]
     },
     {
       pfp: "/imgs/kayky-pfp.jpg",
       name: "Kayky Crespo",
       RA: "G839226",
-      roles: [
-        "Creative design", "React Developer"
-      ]
+      roles: ["Creative design", "React Developer"]
     },
     {
       pfp: "/imgs/luiza-pfp.jpg",
       name: "Luiza Lacerda",
       RA: "G4818H2",
-      roles: [
-        "Project lead", "Quality Assurance"
-      ]
+      roles: ["Project lead", "Quality Assurance"]
     }
   ];
 
+  // Função que renderiza um card de perfil animado para cada membro da equipe
   const teamProfile = (pfp, name, RA, tags) => (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -51,7 +48,7 @@ export default function DrawingApp() {
         alt={name}
         className="w-32 h-32 border-2 border-gray-600 rounded-full object-cover"
       />
-      <span className="font-poppins  text-white">{RA}</span>
+      <span className="font-poppins text-white">{RA}</span>
       <span className="font-poppins font-semibold text-xl text-white">{name}</span>
       <div className="flex flex-wrap gap-2 justify-center">
         {tags.map((tag, index) => (
@@ -67,14 +64,16 @@ export default function DrawingApp() {
     </motion.div>
   );
 
+  // Função que desenha a forma no canvas e gera o código correspondente
   const drawShape = () => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const ctx = canvas.getContext('2d'); // Contexto 2D para desenhar
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
     ctx.fillStyle = selectedColor;
 
     let code = '';
 
+    // Desenha a forma de acordo com a seleção do usuário
     switch (selectedShape) {
       case 'square':
         ctx.fillRect(100, 100, 100, 100);
@@ -109,15 +108,17 @@ ctx.fill();`;
         break;
     }
 
-    setShapeCode(code);
+    setShapeCode(code); // Salva o código gerado para exibir ao usuário
   };
 
+  // Executa a função drawShape uma vez quando o componente é montado
   useEffect(() => {
     drawShape();
   }, []);
 
   return (
     <div>
+      {/* Área principal com gradiente de fundo e seleção de forma/cor */}
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white flex flex-col items-center justify-center px-6 py-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -125,12 +126,14 @@ ctx.fill();`;
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="w-full max-w-md bg-gray-800 p-6 rounded-2xl shadow-xl space-y-6"
         >
+          {/* Cabeçalho com nome e versão do app */}
           <div className="flex justify-between items-end border-b border-gray-600 pb-2">
             <h1 className="text-3xl font-semibold tracking-wide">🎨 Painter</h1>
             <span className="text-sm text-gray-400">v1.0</span>
           </div>
 
           <div className="space-y-4">
+            {/* Menu de seleção de forma */}
             <label className="block text-sm font-medium mb-1">Choose a shape</label>
             <select
               value={selectedShape}
@@ -143,6 +146,8 @@ ctx.fill();`;
                 </option>
               ))}
             </select>
+
+            {/* Menu de seleção de cor */}
             <label className="block text-sm font-medium mb-1">Choose a color</label>
             <select
               value={selectedColor}
@@ -156,6 +161,7 @@ ctx.fill();`;
               ))}
             </select>
 
+            {/* Botão para desenhar a forma */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.02 }}
@@ -166,6 +172,7 @@ ctx.fill();`;
             </motion.button>
           </div>
 
+          {/* Exibe o código usado para desenhar a forma */}
           {shapeCode && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -181,6 +188,7 @@ ctx.fill();`;
           )}
         </motion.div>
 
+        {/* Área do canvas onde a forma será desenhada */}
         <motion.canvas
           ref={canvasRef}
           width={300}
@@ -192,14 +200,18 @@ ctx.fill();`;
         />
       </div>
 
+      {/* Seção com os participantes do projeto */}
       <div className="bg-gray-800 w-full p-16 px-4 flex flex-col items-start">
         <div className="flex flex-col gap-16 w-full max-w-7xl mx-auto">
           <span className="font-poppins font-bold text-3xl text-white text-center">
             Partipantes
           </span>
+          {/* Lista os membros da equipe com animações */}
           <div className="flex flex-wrap gap-8 justify-between w-full">
             {team.map((member, index) => (
-              <div key={index}>{teamProfile(member.pfp, member.name,member.RA, member.roles)}</div>
+              <div key={index}>
+                {teamProfile(member.pfp, member.name, member.RA, member.roles)}
+              </div>
             ))}
           </div>
         </div>
