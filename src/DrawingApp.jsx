@@ -64,6 +64,14 @@ export default function DrawingApp() {
     </motion.div>
   );
 
+  // Função que limpa dos desenhos
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
+    setShapeCode(''); // Limpa o código exibido
+  };
+
   // Função que desenha a forma no canvas e gera o código correspondente
   const drawShape = () => {
     const canvas = canvasRef.current;
@@ -171,6 +179,16 @@ ctx.fill();`;
               Draw Shape
             </motion.button>
           </div>
+
+          {/* Botão para limpar o canvas e código */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            onClick={clearCanvas}
+            className="text-black w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-200 py-2 rounded-xl font-medium cursor-pointer"
+          >
+            Clear
+          </motion.button>
 
           {/* Exibe o código usado para desenhar a forma */}
           {shapeCode && (
