@@ -33,10 +33,8 @@ O **Painter** é uma aplicação web interativa desenvolvida como parte de uma a
 ## 🚀 Demonstração
 
 ### Interface Principal
-![Interface do Painter](./puublic/imgs/page.png)
-
-### Funcionalidades em Ação
-![Desenho sendo criado](./puublic/imgs/page2.png)
+![Interface do Painter](./public/imgs/page.png)
+![Desenho sendo criado](./public/imgs/page2.png)
 
 ---
 
