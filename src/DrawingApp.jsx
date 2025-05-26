@@ -156,18 +156,30 @@ ctx.fill();`;
             </select>
 
             {/* Menu de seleção de cor */}
-            <label className="block text-sm font-medium mb-1">Choose a color</label>
-            <select
-              value={selectedColor}
-              onChange={(e) => setSelectedColor(e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
-            >
-              {colors.map((color) => (
-                <option key={color} value={color}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </option>
-              ))}
-            </select>
+            {/* Seleção de cor com paleta visual */}
+            <div>
+              <label className="block text-sm font-medium mb-3">Choose a color</label>
+              <div className="grid grid-cols-4 gap-3">
+                {colors.map((color) => (
+                  <motion.button
+                    key={color}
+                    onClick={() => setSelectedColor(color)}
+                    className={`w-full h-12 rounded-lg border-2 transition-all duration-200 ${
+                      selectedColor === color
+                        ? 'border-white scale-110 shadow-lg'
+                        : 'border-gray-600 hover:border-gray-400'
+                    }`}
+                    style={{ backgroundColor: color }}
+                    whileHover={{ scale: selectedColor === color ? 1.1 : 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="text-black text-xs font-semibold drop-shadow-lg capitalize">
+                      {color}
+                    </span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
 
             {/* Botão para desenhar a forma */}
             <motion.button
@@ -176,7 +188,7 @@ ctx.fill();`;
               onClick={drawShape}
               className="text-black w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-200 py-2 rounded-xl font-medium cursor-pointer"
             >
-              Draw Shape
+              ✏️ Draw Shape
             </motion.button>
           </div>
 
@@ -187,7 +199,7 @@ ctx.fill();`;
             onClick={clearCanvas}
             className="text-black w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-200 py-2 rounded-xl font-medium cursor-pointer"
           >
-            Clear
+            🗑️ Clear
           </motion.button>
 
           {/* Exibe o código usado para desenhar a forma */}
